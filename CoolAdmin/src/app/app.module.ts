@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
+import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatToolbarModule, MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,11 @@ import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatForm
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

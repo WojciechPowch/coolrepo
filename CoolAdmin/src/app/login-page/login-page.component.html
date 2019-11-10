@@ -1,5 +1,27 @@
-<div class="container-fluid">
-    <form >
-
-    </form>
+<div class="container-fluid custom-container">
+    <mat-card>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field>
+                            <input matInput type="text" placeholder="Login" formControlName="loginField">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Password" formControlName="passwordField">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button mat-button>Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-card>
 </div>
