@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.scss';
-import { Nav } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -8,16 +8,16 @@ const Navbar = () => {
         <nav>
             <ul>
                 <li>
-                    <Nav to="/">Home</Nav>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Nav to="/information">O nas</Nav>
+                    <Link to="/information">O nas</Link>
                 </li>
                 <li>
-                    <Nav to="/news">Wiadomości</Nav>
+                    <Link to="/news">Wiadomości</Link>
                 </li>
                 <li>
-                    <Nav to="/contact">Kontakt</Nav>
+                    <Link to="/contact">Kontakt</Link>
                 </li>
             </ul>
         </nav>
