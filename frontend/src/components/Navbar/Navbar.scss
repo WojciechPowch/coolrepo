@@ -1,6 +1,7 @@
 .navbar {
     width: 80%;
-    margin: 30px auto 0 auto;
+    margin: 0 auto 0 auto;
+    padding-top: 30px;
 }
 
 .navbar__ul {
@@ -25,4 +26,12 @@
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 2px;
     color: black;
+    transition: 1s;
+    min-width: 150px;
+}
+
+.navbar__link:hover {
+    background-color: rgba(63, 168, 188, 0.7);
+    transition: 1s;
+
 }

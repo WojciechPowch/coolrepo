@@ -5,19 +5,19 @@ import Home from './../Home/Home';
 import Information from './../Information/Information';
 import News from './../News/News';
 import Contact from './../Contact/Contact';
+import './MainPage.scss';
 
 class MainPage extends Component {
     state = {}
     render() {
         return (
-            <React.Fragment>
+            <section className="MainPage-section">
                 <Navbar />
                 <Route exact path="/" component={Home} />
                 <Route path="/information" component={Information} />
                 <Route path="/news" component={News} />
                 <Route path="/contact" component={Contact} />
-                <div>Hej</div>
-            </React.Fragment>
+            </section>
         );
     }
 }

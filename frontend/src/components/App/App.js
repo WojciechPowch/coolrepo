@@ -6,9 +6,7 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
-      <div className="mainPage">
-        <MainPage />
-      </div>
+      <MainPage />
     </BrowserRouter>
   );
 }
