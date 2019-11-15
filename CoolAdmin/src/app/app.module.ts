@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatToolbarModule, MatInputModule } from '@angular/material';
+import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatToolbarModule, MatInputModule, MatDividerModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

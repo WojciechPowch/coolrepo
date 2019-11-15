@@ -4,8 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const controllers_initializator_1 = require("./controllers/controllers-initializator");
+const database_adapter_1 = require("./database/database-adapter");
 const app = express_1.default();
 const port = 8080; // default port to listen
+const controllersInitializator = new controllers_initializator_1.ControllersInitializator(app);
+controllersInitializator.initControllers();
+const dbAdapter = database_adapter_1.DatabaseAdapter.getInstance();
+setTimeout(() => {
+    dbAdapter.createCollection();
+}, 10000);
 // define a route handler for the default home page
 // @ts-ignore
 app.get("/", (req, res) => {

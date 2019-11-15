@@ -1,6 +1,12 @@
 import express from "express";
+import { ControllersInitializator } from "./controllers/controllers-initializator";
+import { DatabaseAdapter } from "./database/database-adapter";
 const app = express();
 const port = 8080; // default port to listen
+
+const controllersInitializator = new ControllersInitializator(app);
+controllersInitializator.initControllers();
+DatabaseAdapter.getInstance();
 
 // define a route handler for the default home page
 // @ts-ignore
