@@ -1,8 +1,11 @@
 import React from 'react';
+import './News.scss';
 
 const News = () => {
     return (
-        <div>NewsContent</div>
+        <section className="news_section">
+            <p>A tu newsy np</p>
+        </section>
     )
 };
 

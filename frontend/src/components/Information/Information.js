@@ -1,8 +1,11 @@
 import React from 'react';
+import './Information.scss';
 
 const Information = () => {
     return (
-        <div>InformationContent</div>
+        <div className="information_section">
+            <p>Zakładka informacji</p>
+        </div>
     )
 };
 
