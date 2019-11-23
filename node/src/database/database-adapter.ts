@@ -1,9 +1,13 @@
+import { throws } from "assert";
 import mongo from "mongodb";
 import { Logger } from "../util/logger";
 
 export class DatabaseAdapter {
 
     public static getInstance(): DatabaseAdapter {
+        if (!this.instance) {
+            this.instance = new DatabaseAdapter();
+        }
         return this.instance;
     }
 
@@ -14,6 +18,9 @@ export class DatabaseAdapter {
     private db: any;
 
     private constructor() {
+        if (this.db) {
+            return;
+        }
         this.mongoClient.connect(this.url, {useUnifiedTopology: true, useNewUrlParser: true}, (error, db) => {
             if (error) {
                 Logger.print("error occured while connecting database");
@@ -25,6 +32,10 @@ export class DatabaseAdapter {
         });
     }
 
+    public getDB() {
+        return this.db;
+    }
+
     public insert(collection: string, data: any): void {
         // @ts-ignore
         this.db.collection(collection).insertOne(data, (error, res) => {
@@ -32,20 +43,16 @@ export class DatabaseAdapter {
                 throw error;
             }
             Logger.print(`Insert 1 row to collection ${collection}`);
-        })
+        });
     }
 
-    public insertMany(collection: string, data: Array<any>): void {
+    public insertMany(collection: string, data: any[]): void {
         // @ts-ignore
         this.db.collection(collection).insertMany(data, (error, res) => {
             if (error) {
                 throw error;
             }
             Logger.print(`Insert ${data.length} rows to collection ${collection}`);
-        })
-    }
-
-    public getData(collection: string, query: any, callback: Function): void {
-        this.db.collection(collection).find(query).toArray(callback)
+        });
     }
 }

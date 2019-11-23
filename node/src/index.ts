@@ -3,6 +3,8 @@ import { ControllersInitializator } from "./controllers/controllers-initializato
 import { DatabaseAdapter } from "./database/database-adapter";
 const app = express();
 const port = 8080; // default port to listen
+// tslint:disable-next-line
+require("dotenv/config");
 
 const controllersInitializator = new ControllersInitializator(app);
 controllersInitializator.initControllers();

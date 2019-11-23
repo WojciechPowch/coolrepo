@@ -8,12 +8,11 @@ const controllers_initializator_1 = require("./controllers/controllers-initializ
 const database_adapter_1 = require("./database/database-adapter");
 const app = express_1.default();
 const port = 8080; // default port to listen
+// tslint:disable-next-line
+require("dotenv/config");
 const controllersInitializator = new controllers_initializator_1.ControllersInitializator(app);
 controllersInitializator.initControllers();
-const dbAdapter = database_adapter_1.DatabaseAdapter.getInstance();
-setTimeout(() => {
-    dbAdapter.createCollection();
-}, 10000);
+database_adapter_1.DatabaseAdapter.getInstance();
 // define a route handler for the default home page
 // @ts-ignore
 app.get("/", (req, res) => {
