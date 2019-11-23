@@ -9,12 +9,14 @@ import { MatSliderModule, MatButtonModule, MatCardModule, MatIconModule, MatForm
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    DialogWindowComponent
+    DialogWindowComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

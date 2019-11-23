@@ -4,6 +4,7 @@ import { LoginService } from './login.service';
 import { MatDialog } from '@angular/material';
 import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 import { IsiServiceService } from '../isi-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -19,7 +20,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private service: LoginService,
               public dialog: MatDialog,
-              private isiService: IsiServiceService) { }
+              private isiService: IsiServiceService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,7 +33,7 @@ export class LoginPageComponent implements OnInit {
       (data) => {
         if (data.success) {
           this.isiService.setIsi(data.isi)
-          // navigate to administrator panel
+          this.router.navigate(['adminpanel'])
         } else {
           this.openErrorDialogWindow(data.message);
         }

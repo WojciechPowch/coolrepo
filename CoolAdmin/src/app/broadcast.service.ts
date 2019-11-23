@@ -29,6 +29,18 @@ export class BroadcastService {
             });
   }
 
+  public providePostRequest(controller: string, 
+    params: Map<string, string> = new Map(), 
+    additionalHeaders: Map<string, string> = new Map()): Observable<any> {
+      let url: string = this.createUrl(controller);
+      let headers: HttpHeaders = this.createHeadersSet(additionalHeaders);
+      let httpParams: any = this.createHttpParams(params);
+      return this.http.post(url, '', {
+        headers: headers, 
+        params: httpParams
+      })
+    }
+
   private createUrl(controller: String): string {
     return this.mainUrl + "/" + controller;
   }
