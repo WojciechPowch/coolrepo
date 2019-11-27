@@ -22,7 +22,8 @@
     height: 70px;
     box-sizing: border-box;
     line-height: 70px;
-    color: black
+    color: black;
+    border: 2px solid black;
 }
 
 .navbar__link {
@@ -31,12 +32,12 @@
 
 @mixin navbar_clicked {
     @include navbar_link();
-    border-bottom: solid 7px rgba(77, 157, 160, 1);
+    background-color: rgba(77, 157, 160, 0.7);
     transition: 1.2s;
 }
 
 @mixin navbar_clicked_hover {
-    background-color: rgba(77, 157, 160, 1);
+    background-color: rgba(77, 157, 160, 0.7);
     transition: 1.2s;
 }
 
