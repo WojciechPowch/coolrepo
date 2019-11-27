@@ -9,6 +9,6 @@
 .grid__container {
     height: 100vh;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 250px 2fr 1fr 100px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 70px auto 50px;
 }
