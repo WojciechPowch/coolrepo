@@ -4,6 +4,7 @@ class DatabaseVariables {
 }
 exports.DatabaseVariables = DatabaseVariables;
 DatabaseVariables.collections = {
-    ADMIN_USERS: "adminUsers"
+    ADMIN_USERS: "adminUsers",
+    POSTS: "posts"
 };
 //# sourceMappingURL=database-variables.js.map

@@ -1,0 +1,9 @@
+.custom-container {
+  width: 100vw;
+  height: calc(100vh - 64px);
+  padding-top: 50px;
+  .editor-card {
+    width: 100%;
+    height: 95%;
+  }
+}

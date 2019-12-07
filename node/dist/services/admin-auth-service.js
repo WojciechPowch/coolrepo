@@ -13,15 +13,26 @@ class AdminAuthService {
     static getInstance() {
         return this.instance;
     }
-    authenticateUser(result, password, response) {
+    async provideAuthenticateAction(request, response) {
+        const login = request.query.login;
+        const password = request.query.password;
+        const result = await this.dbAdapter.getData(database_variables_1.DatabaseVariables.collections.ADMIN_USERS, { login });
+        try {
+            await this.authenticateUser(result, password, response);
+        }
+        catch (exception) {
+            response.send({ sucess: false, message: "Failed to login" });
+            return;
+        }
+    }
+    async authenticateUser(result, password, response) {
         try {
             // @ts-ignore
             const user = this.getUserFromDbResponse(result);
             this.verifyUserPassword(password, user.password);
             const accessToken = this.tokenManager.getAccessToken(user.login);
             const refreshToken = this.tokenManager.getRefreshToken(user.login);
-            this.dbAdapter.getDB().collection(database_variables_1.DatabaseVariables.collections.ADMIN_USERS)
-                .updateOne({ _id: user._id }, { $set: { refreshToken } });
+            await this.dbAdapter.update(database_variables_1.DatabaseVariables.collections.ADMIN_USERS, { _id: user._id }, { refreshToken });
             response.cookie("isi_7", refreshToken, {
                 httpOnly: true
             });

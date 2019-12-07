@@ -32,23 +32,31 @@ class DatabaseAdapter {
     getDB() {
         return this.db;
     }
-    insert(collection, data) {
+    async insert(collection, data) {
         // @ts-ignore
-        this.db.collection(collection).insertOne(data, (error, res) => {
+        return await this.db.collection(collection).insertOne(data, (error, res) => {
             if (error) {
-                throw error;
+                return false;
             }
             logger_1.Logger.print(`Insert 1 row to collection ${collection}`);
+            return true;
         });
     }
-    insertMany(collection, data) {
+    async insertMany(collection, data) {
         // @ts-ignore
-        this.db.collection(collection).insertMany(data, (error, res) => {
+        return await this.db.collection(collection).insertMany(data, (error, res) => {
             if (error) {
-                throw error;
+                return false;
             }
             logger_1.Logger.print(`Insert ${data.length} rows to collection ${collection}`);
+            return true;
         });
+    }
+    async getData(collection, condition) {
+        return await this.db.collection(collection).find(condition).toArray();
+    }
+    async update(collection, condition, data) {
+        return await this.db.collection(collection).updateOne(condition, { $set: data });
     }
 }
 exports.DatabaseAdapter = DatabaseAdapter;

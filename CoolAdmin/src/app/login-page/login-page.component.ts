@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { MatDialog } from '@angular/material';
-import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 import { IsiServiceService } from '../isi-service.service';
 import { Router } from '@angular/router';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-login-page',
@@ -19,9 +18,9 @@ export class LoginPageComponent implements OnInit {
   })
 
   constructor(private service: LoginService,
-              public dialog: MatDialog,
               private isiService: IsiServiceService,
-              private router: Router) { }
+              private router: Router,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
   }
@@ -33,6 +32,7 @@ export class LoginPageComponent implements OnInit {
       (data) => {
         if (data.success) {
           this.isiService.setIsi(data.isi)
+          this.service.accessGranted.emit(true);
           this.router.navigate(['adminpanel'])
         } else {
           this.openErrorDialogWindow(data.message);
@@ -57,12 +57,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   private openErrorDialogWindow(message: string): void {
-    this.dialog.open(DialogWindowComponent, {
-      width: '250px',
-      data: {
-        message: message
-      }
-    })
+    this.dialogService.openErrorDialogWindow(message);
   }
 
   private getLoginFieldErrorMessage(): string {

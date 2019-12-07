@@ -13,7 +13,7 @@ class TokenManager {
         });
     }
     verifyAccessToken(authQuery) {
-        const token = authQuery.split(" ")[1];
+        const token = authQuery;
         if (!token) {
             throw { message: "Your session expired!" };
         }

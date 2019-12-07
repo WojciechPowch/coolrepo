@@ -2,41 +2,25 @@ import core from "express";
 import { DatabaseAdapter } from "../database/database-adapter";
 import { DatabaseVariables } from "../database/database-variables";
 import { AdminAuthService } from "../services/admin-auth-service";
+import { ICoolController } from "./cool-controller";
 
-export class AdminAuthController {
+export class AdminAuthController implements ICoolController {
 
     private app: core.Express;
     private service: AdminAuthService;
 
-    constructor(app: core.Express) {
-        this.app = app;
+    constructor() {
         this.service = AdminAuthService.getInstance();
     }
 
-    public init(): void {
+    public init(app: core.Express): void {
+        this.app = app;
         this.app.get("/adminLogin", this.adminLogin);
         this.app.post("/adminLogout", this.adminLogout);
     }
 
-    private adminLogin = (request: core.Request, response: core.Response) => {
-        const login = request.query.login;
-        const password = request.query.password;
-        DatabaseAdapter
-            .getInstance()
-            .getDB()
-            .collection(DatabaseVariables.collections.ADMIN_USERS).find({ login })
-            // @ts-ignore
-            .toArray((err, res) => {
-                if (err) {
-                    response.send({ sucess: false, message: "Failed to login" });
-                    return;
-                }
-                try {
-                    this.service.authenticateUser(res, password, response);
-                } catch (exception) {
-                    response.send({ sucess: false, message: "Failed to login" });
-                }
-            });
+    private adminLogin = async (request: core.Request, response: core.Response) => {
+        await this.service.provideAuthenticateAction(request, response);
     }
 
     private adminLogout = (request: core.Request, response: core.Response) => {

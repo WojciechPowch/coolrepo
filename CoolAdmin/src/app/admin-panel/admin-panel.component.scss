@@ -7,3 +7,14 @@
         cursor: pointer;
     }
 }
+
+.button-float-add-post {
+    position: fixed;
+    top: 84px;
+    right: 1vw;
+}
+
+.button-float-refresh {
+    @extend .button-float-add-post;
+    right: 5vw;
+}

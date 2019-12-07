@@ -15,7 +15,7 @@ export class TokenManager {
     }
 
     public verifyAccessToken(authQuery: string): string {
-        const token = authQuery.split(" ")[1];
+        const token = authQuery;
         if (!token) {
             throw { message: "Your session expired!" };
         }

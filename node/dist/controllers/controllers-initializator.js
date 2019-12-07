@@ -7,14 +7,20 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const admin_auth_controller_1 = require("./admin-auth-controller");
+const posts_controller_1 = require("./posts-controller");
 class ControllersInitializator {
     constructor(app) {
+        this.controllersTape = [
+            new admin_auth_controller_1.AdminAuthController(),
+            new posts_controller_1.PostsController()
+        ];
         this.app = app;
         this.setServerSettings();
     }
     initControllers() {
-        const adminAuthController = new admin_auth_controller_1.AdminAuthController(this.app);
-        adminAuthController.init();
+        this.controllersTape.forEach((controller) => {
+            controller.init(this.app);
+        });
     }
     setServerSettings() {
         this.app.use(express_1.default.json());

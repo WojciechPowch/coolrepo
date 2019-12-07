@@ -36,23 +36,34 @@ export class DatabaseAdapter {
         return this.db;
     }
 
-    public insert(collection: string, data: any): void {
+    public async insert(collection: string, data: any): Promise<boolean> {
         // @ts-ignore
-        this.db.collection(collection).insertOne(data, (error, res) => {
+        return await this.db.collection(collection).insertOne(data, (error, res) => {
             if (error) {
-                throw error;
+                return false;
             }
             Logger.print(`Insert 1 row to collection ${collection}`);
+            return true;
         });
     }
 
-    public insertMany(collection: string, data: any[]): void {
+    public async insertMany(collection: string, data: any[]): Promise<boolean> {
         // @ts-ignore
-        this.db.collection(collection).insertMany(data, (error, res) => {
+        return await this.db.collection(collection).insertMany(data, (error, res) => {
             if (error) {
-                throw error;
+                return false;
             }
             Logger.print(`Insert ${data.length} rows to collection ${collection}`);
+            return true;
         });
+    }
+
+    public async getData(collection: string, condition: any): Promise<any[]> {
+        return await this.db.collection(collection).find(condition).toArray();
+    }
+
+    public async update(collection: string, condition: any, data: any): Promise<any> {
+        return await this.db.collection(collection).updateOne(condition,
+                                                                {$set : data});
     }
 }

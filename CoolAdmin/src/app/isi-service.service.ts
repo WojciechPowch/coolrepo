@@ -5,13 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class IsiServiceService {
 
-  constructor() { 
-    let isi = localStorage.getItem('isi');
-    if (isi) {
-      this.isi = isi;
-    }
-  }
-
   private isi: string = '';
 
   public setIsi(isi: string): void {
@@ -24,6 +17,18 @@ export class IsiServiceService {
   }
 
   public getIsi(): string {
-    return this.isi;
+    if (this.isi !== '') {
+      return this.isi;
+    } else {
+      this.getIsiFromLocalStorage();
+      return this.isi;
+    }
+  }
+
+  private getIsiFromLocalStorage(): void {
+    let isi = localStorage.getItem('isi');
+    if (isi) {
+      this.isi = isi;
+    }
   }
 }

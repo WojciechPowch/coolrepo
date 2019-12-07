@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthData } from './auth-data';
 import { BroadcastService } from '../broadcast.service';
@@ -10,6 +10,7 @@ import { IsiServiceService } from '../isi-service.service';
 export class LoginService {
 
   private login: string;
+  public accessGranted: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private broadcast: BroadcastService,
               private isiService: IsiServiceService) { }

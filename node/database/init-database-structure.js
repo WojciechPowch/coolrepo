@@ -12,13 +12,16 @@ MongoClient.connect(url + dbName, { useUnifiedTopology: true }, (err, db) => {
 });
 
 setTimeout(() => {
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db(dbName);
         dbo.createCollection("adminUsers", function (err, res) {
             if (err) throw err;
             console.log('Collection adminUsers created!');
-            db.close();
+        });
+        dbo.createCollection("posts", function (err, res) {
+            if (err) throw err;
+            console.log('Collection posts created!');
         });
     });
-}, 20000)
+}, 10000)

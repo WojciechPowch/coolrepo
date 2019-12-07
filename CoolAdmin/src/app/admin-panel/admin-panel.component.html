@@ -1,7 +1,15 @@
 <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row>
-        <span>title</span>
+        <span>CoolAdmin :)</span>
         <span class="spacer"></span>
         <mat-icon class="action-icon" (click)="logOut()">power_settings_new</mat-icon>
     </mat-toolbar-row>
 </mat-toolbar>
+<button *ngIf="showActions" mat-fab class="button-float-add-post"
+    (click)="navigateToPostEditor()">
+    <mat-icon>add</mat-icon>
+</button>
+<button *ngIf="showActions" mat-fab class="button-float-refresh">
+    <mat-icon>refresh</mat-icon>
+</button>
+<router-outlet></router-outlet>

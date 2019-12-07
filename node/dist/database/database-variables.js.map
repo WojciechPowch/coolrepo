@@ -1,1 +1,1 @@
-{"version":3,"file":"database-variables.js","sourceRoot":"","sources":["../../src/database/database-variables.ts"],"names":[],"mappings":";;AAAA,MAAa,iBAAiB;;AAA9B,8CAIC;AAHiB,6BAAW,GAAG;IACxB,WAAW,EAAE,YAAY;CAC5B,CAAC"}
+{"version":3,"file":"database-variables.js","sourceRoot":"","sources":["../../src/database/database-variables.ts"],"names":[],"mappings":";;AAAA,MAAa,iBAAiB;;AAA9B,8CAKC;AAJiB,6BAAW,GAAG;IACxB,WAAW,EAAE,YAAY;IACzB,KAAK,EAAE,OAAO;CACjB,CAAC"}
