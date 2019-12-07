@@ -1,0 +1,53 @@
+
+@mixin navbar {
+    width: 80%;
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    grid-column: 1;
+    grid-row: 2;
+}
+.navbar {
+    @include navbar;                        
+}
+
+@mixin navbar_link {
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
+    min-width: 200px;
+    width: 250px;
+    height: 70px;
+    box-sizing: border-box;
+    line-height: 70px;
+    color: black;
+}
+
+.navbar__link {
+    @include navbar_link();
+}
+
+@mixin navbar_clicked {
+    @include navbar_link();
+    background-color: rgba(77, 157, 160, 0.7);
+    transition: 1.2s;
+}
+
+@mixin navbar_clicked_hover {
+    background-color: rgba(77, 157, 160, 0.7);
+    transition: 1.2s;
+}
+
+.navbar__link--home, .navbar__link--info, .navbar__link--news, .navbar__link--contact {
+    @include navbar_clicked()
+}
+.navbar__link--home:hover, .navbar__link--info:hover, .navbar__link--news:hover, .navbar__link--contact:hover {
+    @include navbar_clicked_hover();
+}
+
+.navbar__link:hover {
+    background-color: rgba(77, 157, 160, 1);
+    transition: 1.2s;
+}

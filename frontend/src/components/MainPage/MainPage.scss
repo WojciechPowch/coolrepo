@@ -1,0 +1,14 @@
+.MainPage-section {
+    background-position: center;
+    background-size: cover;
+    
+    height: 100vh;
+    background-image: url('../../assets/img/home.jpg');
+}
+
+.grid__container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 70px auto 50px;
+}
