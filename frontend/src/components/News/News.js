@@ -3,9 +3,9 @@ import './News.scss';
 
 const News = () => {
     return (
-        <section className="news_section">
-            <p>A tu newsy np</p>
-        </section>
+        <React.Fragment>
+            <div>News</div>
+        </React.Fragment>
     )
 };
 
